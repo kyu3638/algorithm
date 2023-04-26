@@ -13,18 +13,32 @@ for _ in range(E):
 
 visited = [False] * (V + 1)
 
+###################
+# # bfs 풀이
+# def bfs(start):
+#     Q = deque([start])
+#     visited[start] = True
+#     while Q:
+#         v = Q.popleft()
+#         for i in graph[v]:
+#             if not visited[i]:
+#                 Q.append(i)
+#                 visited[i] = True
 
-# bfs 풀이
-def bfs(start):
-    Q = deque([start])
+
+# bfs(1)
+# print(visited.count(True) - 1)
+#####################
+
+
+#####################
+# dfs 풀이
+def dfs(start):
     visited[start] = True
-    while Q:
-        v = Q.popleft()
-        for i in graph[v]:
-            if not visited[i]:
-                Q.append(i)
-                visited[i] = True
+    for i in graph[start]:
+        if not visited[i]:
+            dfs(i)
 
 
-bfs(1)
+dfs(1)
 print(visited.count(True) - 1)
