@@ -1,25 +1,30 @@
 import sys
 from collections import deque
 
+input = sys.stdin.readline
+
 V = int(input())
 E = int(input())
-adj=[[] for _ in range(V+1)]
+graph = [[] for _ in range(V + 1)]
 for _ in range(E):
     a, b = map(int, input().split())
-    adj[a].append(b)
-    adj[b].append(a)
+    graph[a].append(b)
+    graph[b].append(a)
 
-visited = [False]*(V+1)
+visited = [False] * (V + 1)
 
+
+# bfs 풀이
 def bfs(start):
-    que = deque([start])
+    Q = deque([start])
     visited[start] = True
-    while que:
-        v = que.popleft()
-        for i in adj[v]:
+    while Q:
+        v = Q.popleft()
+        for i in graph[v]:
             if not visited[i]:
-                que.append(i)
+                Q.append(i)
                 visited[i] = True
 
+
 bfs(1)
-print(visited.count(True)-1)
+print(visited.count(True) - 1)
