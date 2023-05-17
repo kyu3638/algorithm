@@ -2,16 +2,12 @@ import sys
 
 input = sys.stdin.readline
 
-arr = []
+nums = []
 count = 1
-while True:
+while len(nums) < 1000:
     for _ in range(count):
-        arr.append(count)
-        if len(arr) == 1000:
-            break
+        nums.append(count)
     count += 1
-    if len(arr) == 1000:
-        break
 
 a, b = map(int, input().split())
-print(sum(arr[a - 1 : b]))
+print(sum(nums[a - 1 : b]))
