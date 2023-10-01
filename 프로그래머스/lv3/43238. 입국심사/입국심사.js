@@ -1,26 +1,28 @@
-function solution(n, times){
-    // 이분탐색을 위한 정렬
-    times.sort((a,b)=>a-b);
-    // pl, pr, mid 값 초기화
-    let pl = 0;
+function solution(n, times) {
+    var answer = 0;
+    // 이분탐색이므로 정렬
+    times.sort((a,b) =>{a-b});
+    // 최소 1분에 모두 심사를 마칠 수 있음
+    // 최대 times의 max값 * n명에 심사를 마칠 수 있음
+    let pl = 1;
     let pr = times[times.length - 1] * n;
-    let mid = Math.floor((pl+pr)/2);
+    let mid = Math.floor((pl + pr) / 2);
+    console.log(pl,pr,mid);
     
-    // pr이 pl보다 큰 경우 계속 반복
+    // 해당 minutes 동안에 심사관이 심사할 수 있는 인원 = Math.floor(minutes/times[i])
     while(pl <= pr){
-        // 현재 시간의 범위에서 몇 명이 검사를 받을 수 있는지 계산
-        const count = times.reduce((result, cur) => result + Math.floor(mid/cur),0);
-        
-        // n명에 해당하는 인원이 검사받지 않는경우
-        if(count >= n){
-            pr = mid - 1; // n명보다 더 많은 사람을 검사하는 경우
-        } else {
-            pl = mid + 1; // n명보다 더 적은 사람을 검사하는 경우
+        let count = 0;
+        for(let i = 0; i < times.length; i++){
+            count += Math.floor(mid/times[i]);
         }
-        
-        // 정해진 pl 또는 pr값을 기준으로 다음 mid 값 결정
+        if(count >= n){
+            pr = mid - 1;
+        } else {
+            pl = mid + 1;
+        }
+        console.log(`pl : ${pl}, pr : ${pr}, mid : ${mid}`)
         mid = Math.floor((pl + pr) / 2);
+
     }
-    
     return pl;
 }
