@@ -24,16 +24,7 @@ function solution(n, k) {
         }
     }
     
-    // 소수 판별하는 함수
-    function isPrime(num) {
-        for(let i = 2; i < num; i++){
-            if(num % i === 0){
-                return false;
-            }
-        }
-        return true
-    }
-    
+    // 소수 판별
     function isPrime(num) {
         if(num <= 1) return false;
         if(num === 2) return true;
