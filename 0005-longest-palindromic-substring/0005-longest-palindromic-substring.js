@@ -9,18 +9,19 @@ var longestPalindrome = function(s) {
     for(let i = 0; i < s.length; i++){
         let palindrome, left, right;
 
+        // 같은 letter가 연속으로 나오는지 확인하고 거기에 맞춰 초기화
         let numOfSameLetter = 1;
         for(let k = i+1; k < s.length; k++){
             if(s[k] === s[i]) numOfSameLetter++;
             else break;
         }
 
-        if(numOfSameLetter % 2 === 1){ // 같은 letter가 홀수개 연속
+        if(numOfSameLetter % 2 === 1){ // 같은 letter가 홀수개 연속일 때 초기화
             i = i + Math.floor(numOfSameLetter / 2);
             palindrome = s[i]
             left = i, right = i;
         }
-        else if(numOfSameLetter % 2 === 0){ // 같은 letter가 짝수개 연속
+        else if(numOfSameLetter % 2 === 0){ // 같은 letter가 짝수개 연속일 때 초기화
             i = i + (numOfSameLetter / 2 - 1);
             palindrome = s[i] + s[i+1];
             left = i, right = i+1;
