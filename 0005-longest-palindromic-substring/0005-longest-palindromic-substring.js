@@ -33,7 +33,7 @@ var longestPalindrome = function(s) {
                 if(s[left-j] === s[right+j]){
                     palindrome = s[left-j] + palindrome + s[right+j];
                 } else break;
-            } else break;
+            }
         }
 
         // 기준을 각 letter로 잡았을 때의 palindrome의 길이를 비교하교 answer 갱신 
