@@ -8,8 +8,6 @@ class MyStack {
         if (!this.q1.length && !this.q2.length) this.q1.push(value);
         else if (this.q1.length && !this.q2.length) this.q1.push(value);
         else if (!this.q1.length && this.q2.length) this.q2.push(value);
-        console.log(`q1 : `, this.q1);
-        console.log(`q2 : `, this.q2);
     }
 
     top() {
@@ -21,8 +19,6 @@ class MyStack {
         if (this.q1.length) {
             const len1 = this.q1.length
             for (let i = 0; i < len1 - 1; i++) {
-                console.log(`pop1`, this.q1)
-                console.log(`pop2`, this.q2)
                 this.q2.push(this.q1.shift())
             }
 
@@ -34,7 +30,6 @@ class MyStack {
             for (let i = 0; i < len2 - 1; i++) {
                 this.q1.push(this.q2.shift());
             }
-            console.log(`pop`, this.q2)
             return this.q2.shift();
         }
     }
