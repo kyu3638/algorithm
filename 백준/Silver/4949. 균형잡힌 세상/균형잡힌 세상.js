@@ -1,10 +1,10 @@
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 const input = require('fs').readFileSync(filePath).toString().trim().split('\n');
 
+let stack = [];
 const answer = [];
 
 for (let i = 0; i < input.length - 1; i++) {
-  const stack = [];
   const str = input[i];
   let flag = true;
   for (let j = 0; j < str.length; j++) {
@@ -30,6 +30,7 @@ for (let i = 0; i < input.length - 1; i++) {
 
   if (stack.length) {
     flag = false;
+    stack = [];
   }
 
   if (flag) answer.push('yes');
