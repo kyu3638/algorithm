@@ -7,6 +7,7 @@ var permute = function(nums) {
     function backtrack(nums,path){
         if(nums.length === 0){
             answer.push(path);
+            return;
         }
 
         for(let i = 0; i < nums.length; i++){
