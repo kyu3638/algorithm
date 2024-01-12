@@ -20,7 +20,7 @@ var isBalanced = function(root) {
         const right = dfs(node.right)
         if(Math.abs(left-right)>1) answer = false;
 
-        return Math.max(left, right);
+        return Math.max(left+1, right+1);
     }
     
     dfs(root)
