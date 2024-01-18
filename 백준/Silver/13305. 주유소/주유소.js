@@ -5,14 +5,14 @@ const N = +input[0];
 const roads = input[1].split(' ').map(Number);
 const prices = input[2].split(' ').map(Number);
 
-let answer = 0;
-let lowest = prices[0];
+let answer = BigInt(0);
+let lowest = BigInt(prices[0]);
 
 for (let i = 0; i < roads.length; i++) {
   if (prices[i] < lowest) {
     lowest = prices[i];
   }
-  answer += lowest * roads[i];
+  answer += BigInt(lowest) * BigInt(roads[i]);
 }
 
-console.log(answer);
+console.log(String(answer));
