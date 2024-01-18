@@ -16,4 +16,4 @@ for (let i = 0; i < arr.length - 1; i++) {
 }
 minus.sort((a, b) => b - a);
 
-console.log(minus.slice(K - 1, N - 1).reduce((acc, cur) => acc + cur, 0));
+console.log(minus.slice(K - 1).reduce((acc, cur) => acc + cur, 0));
