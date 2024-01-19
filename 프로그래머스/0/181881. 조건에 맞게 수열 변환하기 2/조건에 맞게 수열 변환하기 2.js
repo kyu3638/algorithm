@@ -1,5 +1,5 @@
 function solution(arr) {
-    
+
     let prev = [...arr]
     let current = [...arr]
     let count = 0;
@@ -29,6 +29,6 @@ function solution(arr) {
         prev = [...current]
         // flag = true;
     }
-    
+
     return count;
 }
