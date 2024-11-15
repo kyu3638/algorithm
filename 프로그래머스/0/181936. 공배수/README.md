@@ -1,10 +1,10 @@
 # [level 0] 공배수 - 181936 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181936?language=javascript) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181936?language=csharp) 
 
 ### 성능 요약
 
-메모리: 33.5 MB, 시간: 0.03 ms
+메모리: 31.3 MB, 시간: 0.24 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 04월 24일 00:12:34
+2024년 11월 16일 00:03:42
 
 ### 문제 설명
 
