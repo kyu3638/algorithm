@@ -1,10 +1,10 @@
 # [level 0] n의 배수 - 181937 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181937?language=javascript) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181937?language=csharp) 
 
 ### 성능 요약
 
-메모리: 33.5 MB, 시간: 0.02 ms
+메모리: 31.2 MB, 시간: 0.14 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 03월 13일 22:29:26
+2024년 11월 16일 00:02:26
 
 ### 문제 설명
 
