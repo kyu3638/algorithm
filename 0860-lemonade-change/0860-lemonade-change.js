@@ -3,33 +3,26 @@
  * @return {boolean}
  */
 var lemonadeChange = function(bills) {
-    const count = {}
-    let answer = true;
+    let five = 0, ten = 0;
 
     for(let bill of bills) {
-        // $5 가져왔을 때
-        // count[5]추가
         if(bill === 5) {
-            count[5] = (count[5] || 0) + 1;
+            five++;
         } else if(bill === 10) {
-            // $10 가져왔을 때
-            count[10] = (count[10] || 0) + 1;
-            if(count[5] > 0) count[5]--;
-            else return false;
-        } else {
-            // $20 가져왔을 때
-            count[20] = (count[20] || 0) + 1;
-            if(count[5] > 0 && count[10] > 0){
-                count[10]--;
-                count[5]--;
-            } else if(count[5] >= 3){
-                count[5] = count[5] - 3;
+            if(five === 0) return false;
+            ten++;
+            five--;
+        } else { // bill === 20
+            if(ten > 0 && five > 0) {
+                ten--;
+                five--;
+            } else if(five >= 3) {
+                five -= 3;
             } else {
                 return false;
             }
         }
     }
 
-    console.log(count);
-    return answer;
+    return true;
 };
