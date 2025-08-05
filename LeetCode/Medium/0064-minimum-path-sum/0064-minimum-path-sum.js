@@ -5,29 +5,19 @@
 var minPathSum = function(grid) {
     const rows = grid.length;
     const cols = grid[0].length;
-    const map = Array.from({length:rows},() => Array.from({length:cols}, () => Infinity));
-    map[0][0] = grid[0][0];
+    const dp = Array.from({length:rows},() => Array.from({length:cols}, () => Infinity));
+    dp[0][0] = grid[0][0];
 
-    // 아래 또는 우측으로만 이동
-    const dx = [1, 0]; 
-    const dy = [0, 1];
+    for(let i = 0; i < rows; i++) {
+        for(let j = 0; j < cols; j++) {
+            if(i === 0 && j === 0) continue;
 
-    const queue = [[0, 0, grid[0][0]]];
-
-    while(queue.length > 0) {
-        const [currentX, currentY] = queue.shift();
+            const fromTop = i > 0 ? dp[i-1][j] : Infinity;
+            const fromLeft = j > 0 ? dp[i][j-1] : Infinity;
         
-        for(let i = 0; i < 2; i++) {
-            const nextRow = currentX + dx[i];
-            const nextCol = currentY + dy[i];
-            if(nextRow >=0 && nextRow < rows && nextCol >= 0 && nextCol < cols) {
-if(map[nextRow][nextCol] > map[currentX][currentY] + grid[nextRow][nextCol]) {
-    map[nextRow][nextCol] = map[currentX][currentY] + grid[nextRow][nextCol];
-    queue.push([nextRow, nextCol]);
-}
-            }
+            dp[i][j] = Math.min(fromTop, fromLeft) + grid[i][j];
         }
     }
-
-    return map[rows-1][cols-1];
+    
+    return dp[rows - 1][cols - 1];
 };
