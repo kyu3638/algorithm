@@ -1,48 +1,39 @@
 function solution(numbers) {
-    // 1. 소수 판별 함수
-    function isPrime(num) {
-        if (num < 2) return false;
-        if (num === 2) return true;
-        if (num % 2 === 0) return false;
-        
-        for (let i = 3; i <= Math.sqrt(num); i += 2) {
-            if (num % i === 0) return false;
-        }
-        return true;
-    }
+    const numSet = new Set();
     
-    // 2. 순열 생성 함수 (모든 길이)
-    function getPermutations(arr) {
-        const result = new Set(); // 중복 제거를 위해 Set 사용
+    // len 만큼의 숫자 조합을 만드는 함수
+    const dfs = (currentNum, usedIndices, targetLen) => {
+        // 종료 조건: currentNum.length가 targetLen일 때 numList에 삽입하고 종료
+        if(currentNum.length === targetLen) {
+            numSet.add(Number(currentNum));
+            return;
+        }
         
-        function permute(current, remaining) {
-            if (current.length > 0) {
-                const num = parseInt(current.join(''));
-                if (num > 0) result.add(num); // 0으로 시작하는 수 제외
-            }
-            
-            for (let i = 0; i < remaining.length; i++) {
-                const next = [...current, remaining[i]];
-                const nextRemaining = [...remaining.slice(0, i), ...remaining.slice(i + 1)];
-                permute(next, nextRemaining);
+        for(let i = 0; i < numbers.length; i++) {
+            if(!usedIndices.includes(i)){
+                dfs(currentNum+numbers[i],[...usedIndices,i],targetLen);
             }
         }
-        
-        permute([], arr);
-        return Array.from(result);
     }
     
-    // 3. 모든 가능한 숫자 조합 생성
-    const digits = numbers.split('');
-    const allNumbers = getPermutations(digits);
-    
-    // 4. 소수인 것들만 카운트
-    let count = 0;
-    for (const num of allNumbers) {
-        if (isPrime(num)) {
-            count++;
-        }
+    for(let i = 1; i <= numbers.length; i++) {
+        dfs('', [], i);
     }
     
-    return count;
+    return [...numSet].reduce((acc,cur) => {
+        if(isPrime(cur)) return acc + 1;
+        return acc;
+    }, 0);
+}
+
+const isPrime = (num) => {
+    if(num < 2) return false;
+    if(num === 2) return true;
+    if(num % 2 === 0) return false;
+    
+    for(let i = 3; i <= Math.sqrt(num); i = i + 2) {
+        if(num % i === 0) return false;
+    }
+    
+    return true;
 }
